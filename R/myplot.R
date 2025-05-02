@@ -3,6 +3,8 @@
 #' This function fits a piecewise linear regression model to the spruce dataset
 #' and plots the results.
 #'
+#' @importFrom graphics abline barplot curve polygon text
+#' @name myplot
 #' @param data A dataframe containing the variables "Height" and "BHDiameter".
 #' @param breakpoint The breakpoint for the piecewise function (default is 18).
 #' @return A list containing the linear model summary and the plot.

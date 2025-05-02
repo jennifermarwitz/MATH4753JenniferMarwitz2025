@@ -3,6 +3,9 @@
 #' This function simulates the hypergeometric distribution by randomly sampling
 #' without replacement from a population containing a fixed number of successes.
 #'
+#' @importFrom grDevices rainbow
+#' @importFrom graphics par
+#' @name myhyper
 #' @param iter Integer. The number of iterations (simulations) to perform. Default is 100.
 #' @param N Integer. The total population size. Default is 20.
 #' @param r Integer. The number of successes in the population. Default is 12.
@@ -25,7 +28,7 @@
 myhyper = function(iter = 100, N = 20, r = 12, n = 5) {
   # make a matrix to hold the samples
   # initially filled with NA's
-  sam.mat = matrix(NA, nr = n, nc = iter, byrow = TRUE)
+  sam.mat = matrix(NA, nrow = n, ncol = iter, byrow = TRUE)
 
   # make a vector to hold the number of successes over the trials
   succ = c()
@@ -38,6 +41,7 @@ myhyper = function(iter = 100, N = 20, r = 12, n = 5) {
 
   # Make a table of successes
   succ.tab = table(factor(succ, levels = 0:n))
+  par(mar = c(2, 2, 2, 2))  # Decrease margins
   # Make a barplot of the proportions
   barplot(succ.tab/(iter), col = rainbow(n+1), main = "HYPERGEOMETRIC simulation", xlab = "Number of successes")
   succ.tab/iter
